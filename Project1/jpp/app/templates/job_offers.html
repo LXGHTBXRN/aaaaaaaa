@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список вакансий</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation a:hover {
+            background-color: #333;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .job_offers-list {
+            margin-top: 20px;
+        }
+
+        .vacancy {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .vacancy h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .vacancy p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .vacancy .vacancy-link {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .vacancy .vacancy-link:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Job Parser Platform</h1>
+            <nav class="navigation">
+                <a href="/">Домой</a>
+                <a href="/resumes">Соискатели</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">Список вакансий</h1>
+        <form action="/job_offers" method="get" class="search-form">
+            <label for="query">Поиск вакансий:</label>
+            <input type="text" id="query" name="query" value="{{ query }}">
+            <button type="submit">Найти</button>
+        </form>
+
+        <div class="job_offers-list">
+            {% for vacancy in job_offers %}
+            <div class="vacancy">
+                <h2>{{ vacancy.title }}</h2>
+                <p>Компания: {{ vacancy.company }}</p>
+                <p>Дополнительно: {{ vacancy.additional }}</p>
+                <p>Зарплата: {{ vacancy.salary }}</p>
+                <a href="{{ vacancy.link }}" class="vacancy-link" target="_blank">Ссылка на вакансию</a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 Job Parser Platform. Все права защищены.</п>
+    </footer>
+</body>
+</html>

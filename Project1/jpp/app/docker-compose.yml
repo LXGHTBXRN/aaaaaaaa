@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: C:\Users\777\Desktop\aaaaaaaa-main\Project1\jpp\app\postgres\Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    
+
+  db:
+    build:
+      context: ./postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 3xc1s10N(*
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"

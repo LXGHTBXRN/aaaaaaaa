@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список резюме</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation a:hover {
+            background-color: #333;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .resumes-list {
+            margin-top: 20px;
+        }
+
+        .resume {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .resume p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .resume .resume-link {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .resume .resume-link:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Job Parser Platform</h1>
+            <nav class="navigation">
+                <a href="/">Домой</a>
+                <a href="/job_offers?query=python">Вакансии</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">Список резюме</h1>
+
+        <div class="resumes-list">
+            {% for resume in resumes %}
+            <div class="resume">
+                <h2>{{ resume.title }}</h2>
+                <p>Должность: {{ resume.position }}</p>
+                <p>Дополнительно: {{ resume.additional }}</p>
+                <p>Навыки: {{ resume.skills }}</p>
+                <a href="{{ resume.link }}" class="resume-link" target="_blank">Ссылка на резюме</a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 Job Parser Platform. Все права защищены.</p>
+    </footer>
+</body>
+</html>

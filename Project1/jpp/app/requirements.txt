@@ -1,0 +1,8 @@
+fastapi
+sqlalchemy
+databases
+asyncpg
+psycopg2-binary
+requests
+beautifulsoup4
+httptools==0.1.1
